@@ -4,7 +4,7 @@ import subprocess
 
 git_cmd = "git -C {0} pull origin master"
 
-parent_dir_abspath = os.path.abspath("..")
+parent_dir_abspath = os.path.abspath(".")
 subdir_names = os.listdir(parent_dir_abspath)
 
 for subdir_name in subdir_names:
