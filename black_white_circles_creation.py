@@ -22,7 +22,7 @@
     
   Problems:
   * OSError: dlopen() failed to load a library: cairo / cairo-2 => 下载GTK+，并
-    将bin目录加入环境变量
+    将bin目录加入环境变量(http://win32builder.gnome.org/)
   
 '''
 
