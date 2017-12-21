@@ -38,5 +38,13 @@ from imutils import face_utils
 src_image_file_path = "./resources/thug_life_creation_1.jpg"
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-image", required = false, help = "path to input image")
+parser.add_argument("-image", required = False, help = "path to input image")
 args = parser.parse_args()
+
+test_image_file_path = args.image
+if test_image_file_path == None:
+    test_image_file_path = src_image_file_path
+
+detector = dlib.get_frontal_face_detector()
+predictor = dlib.shape_predictor(test_image_file_path)
+
