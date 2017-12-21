@@ -21,7 +21,9 @@
   * cv2 (pip install opencv-python)
 	
   Problems:
-  * NeedDownloadError('Need ffmpeg exe. 'imageio.core.fetching.NeedDownloadError: Need ffmpeg exe. You can download it by calling: imageio.plugins.ffmpeg.download() => 按照报错操作即可
+  * NeedDownloadError('Need ffmpeg exe. 'imageio.core.fetching.NeedDownloadError: 
+    Need ffmpeg exe. You can download it by calling: 
+	imageio.plugins.ffmpeg.download() => 按照报错操作即可
   
 '''
 
