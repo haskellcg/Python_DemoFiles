@@ -29,7 +29,7 @@ import numpy as np
 import gizeh as gz
 import moviepy.editor as mpy
 
-W, H = 300, 75
+W, H = 500, 75
 D = 2
 r = 22
 outputdir = "./output/"
@@ -43,12 +43,12 @@ polygon = gz.regular_polygon(r, 5, stroke_width = 3,
 
 def make_frame(t):
     surface = gz.Surface(W, H, bg_color = (1, 1, 1))
-    for i, letter in enumerate("GIZEH"):
+    for i, letter in enumerate("haskellcg"):
         angle = max(0, min(1, 2 * t/D - 1.0 * i / 5)) * 2 * np.pi
         txt = gz.text(letter, "Amiri", 3 * r / 2, fontweight = "bold")
         group = (gz.Group([polygon, txt])
                    .rotate(angle)
-                   .translate((W * (i + 1) / 6, H / 2)))
+                   .translate((W * (i + 1) / 10, H / 2)))
         group.draw(surface)
 
     return surface.get_npimage()
