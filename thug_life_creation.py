@@ -7,23 +7,23 @@
   Platform: 
   * Windows7_x64
   * Python3.6_x64
-	  
+      
   Libs:
   * dlib (pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl)
     * numpy
   * moviepy (pip install moviepy)
     * decorator
-	* imageio
-	* olefile
-	* pillow
-	* tqdm
+    * imageio
+    * olefile
+    * pillow
+    * tqdm
   * imutils (pip install imutils)
   * cv2 (pip install opencv-python)
-	
+    
   Problems:
   * NeedDownloadError('Need ffmpeg exe. 'imageio.core.fetching.NeedDownloadError: 
     Need ffmpeg exe. You can download it by calling: 
-	imageio.plugins.ffmpeg.download() => 按照报错操作即可
+    imageio.plugins.ffmpeg.download() => 按照报错操作即可
   
 '''
 

@@ -32,14 +32,14 @@ import moviepy.editor as mpy
 
 W, H = 128, 128
 duration = 2
-ncircles = 100
+ncircles = 20
 outputdir = "./output/"
 
 def make_frame(t):
     surface = gizeh.Surface(W, H)
     
     for i in range(ncircles):
-        angle = 6 * np.pi * ((1.0 * i / ncircles) + (t / duration))
+        angle = 2 * np.pi * ((1.0 * i / ncircles) + (t / duration))
         center = W * (0.5 + gizeh.polar2cart(0.1, angle))
         circle = gizeh.circle(r = W * (1.0 - 1.0 * i / ncircles),
                               xy = center,
