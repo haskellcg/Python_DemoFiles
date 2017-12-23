@@ -56,5 +56,3 @@ for i in range(5);
                                   stroke = (0, 0, 0),
                                   stroke_width = 1)
                        ])
-
-fractal = fractal
