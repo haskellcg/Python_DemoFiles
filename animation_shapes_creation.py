@@ -41,9 +41,7 @@ outputdir = "./output/"
 
 clip = mpy.VideoFileClip(outputdir + "movie_clip_animation.gif")
 (w, h), d = clip.size, clip.duration
-print(w, h, d)
 center = np.array([w / 2, h / 2])
-print(center)
 
 
 def my_filter(get_frame, t):

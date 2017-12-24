@@ -31,10 +31,10 @@ import moviepy.video.tools.cuts as cuts
 src_video = "./resources/test.mp4"
 outputdir = "./output/"
 start_time = (10, 4)
-end_time = (10, 8)
+end_time = (10, 14)
 
 clip = mpy.VideoFileClip(src_video).resize(0.3).subclip(start_time, end_time)
-print(clip)
-t_loop = cuts.find_video_period(clip, tmin = 3.9)
+# change cuts length by changing parameter "tmin" to 10:14 - 10.4 - 0.1
+t_loop = cuts.find_video_period(clip, tmin = 9.9)
 clip.subclip(0, t_loop).write_gif(outputdir + "movie_clip_animation.gif",
                                   opt = "OptimizePlus")
