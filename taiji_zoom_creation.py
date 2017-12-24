@@ -43,8 +43,9 @@ yingyang = gz.Group([
 
 fractal = yingyang
 
-for i in range(5);
+for i in range(5):
     fractal = gz.Group([
+                        yingyang,
                         fractal.rotate(np.pi).scale(0.25).translate([R / 2, 0]),
                         fractal.scale(0.25).translate([-R / 2, 0]),
                         gz.circle(0.26 * R,
@@ -56,3 +57,16 @@ for i in range(5);
                                   stroke = (0, 0, 0),
                                   stroke_width = 1)
                        ])
+fractal = fractal.translate([R / 2, 0]).scale(4)
+
+def make_frame(t):
+    surface = gz.Surface(W, H)
+    G = 2 ** (2 * (t / D))
+    (fractal.translate([R * 2 * (1 - 1.0 / G) / 3, 0])
+            .scale(G)
+            .translate(W / 2 + gz.polar2cart(W / 12, 2 * np.pi * t / D))
+            .draw(surface))
+    return surface.get_npimage()
+
+clip = mpy.VideoClip(make_frame, duration = D)
+clip.write_gif(outputdir + "yingyang.gif", fps = 15, fuzz = 30, opt = "OptimizePlus")
