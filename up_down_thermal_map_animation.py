@@ -20,9 +20,13 @@
     * pygments
     
   Problems:
-  * ImportError: Could not import backend for traits => 目前无法解决
+  * ImportError: Could not import backend for traits => 
+    目前无法解决,只支持python2.7
   
 """
+
+from traits.etsconfig.api import ETSConfig
+ETSConfig.toolkit = "wx"
 
 import numpy as np
 import mayavi.mlab as mlab
