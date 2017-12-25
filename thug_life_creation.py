@@ -1,4 +1,4 @@
-'''
+"""
   Information:
   * Date: 2017-12-21
   * Brief: add thug_life tag for image
@@ -25,7 +25,7 @@
     Need ffmpeg exe. You can download it by calling: 
     imageio.plugins.ffmpeg.download() => 按照报错操作即可
   
-'''
+"""
 
 import dlib
 import argparse

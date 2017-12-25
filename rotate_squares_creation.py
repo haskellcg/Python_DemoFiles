@@ -1,7 +1,7 @@
-'''
+"""
   Information:
-  * Date: 2017-12-21
-  * Brief: create japanese flag gif with python
+  * Date: 2017-12-24
+  * Brief: create rotate squares gif with python
   * Author: haskellcg
 
   Platform: 
@@ -24,7 +24,7 @@
   * OSError: dlopen() failed to load a library: cairo / cairo-2 => 下载GTK+，并
     将bin目录加入环境变量(http://win32builder.gnome.org/)
   
-'''
+"""
 
 import colorsys
 import numpy as np

@@ -1,3 +1,15 @@
+"""
+  Information:
+  * Date: 2017-11-25
+  * Brief: use python script to pull all the updates to local disks
+  * Author: haskellcg
+
+  Platform: 
+  * Windows7_x64
+  * Python3.6_x64
+
+"""
+
 import os
 import os.path
 import sys

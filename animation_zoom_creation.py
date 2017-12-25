@@ -1,7 +1,7 @@
-'''
+"""
   Information:
-  * Date: 2017-12-21
-  * Brief: create japanese flag gif with python
+  * Date: 2017-12-24
+  * Brief: create animation zoom gif with python
   * Author: haskellcg
 
   Platform: 
@@ -31,7 +31,8 @@
 
     from "arr += image.flatten()" to "arr += image.flatten().astype(uint8)"
   
-'''
+"""
+
 import gizeh as gz
 import numpy as np
 import moviepy.editor as mpy

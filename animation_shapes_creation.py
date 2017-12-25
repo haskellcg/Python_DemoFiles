@@ -1,7 +1,7 @@
-'''
+"""
   Information:
-  * Date: 2017-12-21
-  * Brief: create japanese flag gif with python
+  * Date: 2017-12-24
+  * Brief: create animation shapes gif with python
   * Author: haskellcg
 
   Platform: 
@@ -30,8 +30,8 @@
     /site-packages/gizeh/gizeh.py", 40L, 
 
     from "arr += image.flatten()" to "arr += image.flatten().astype(uint8)"
-  
-'''
+
+"""
 
 import numpy as np
 import gizeh as gz
