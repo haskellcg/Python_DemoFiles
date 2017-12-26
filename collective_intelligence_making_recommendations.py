@@ -15,6 +15,8 @@
 
 """
 
+import pydelicious
+
 critics={
         "Lisa Rose": {
             "Lady in the Water": 2.5,
