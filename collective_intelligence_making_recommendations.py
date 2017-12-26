@@ -16,6 +16,7 @@
 """
 
 import pydelicious
+from math import sqrt
 
 critics={
         "Lisa Rose": {
@@ -79,8 +80,6 @@ critics={
 """
     Euclidean Distance Score
 """
-
-from math import sqrt
 
 # Returns a distance-based similarity score for person1 and person2
 def sim_distance(prefs, person1, person2):
@@ -233,3 +232,46 @@ print(get_recommendations(movies, "Just My Luck"))
 # Test pydelicious.py
 # Http error 404, didn't work
 # print(pydelicious.get_popular(tag = ""))
+
+"""
+    Item-Based Filtering
+    
+    The way the recommendation engine has been implemented so far requires
+    the use of all the rankings from every use in order to create a dataset.
+
+    Also, a site that sells millions of products may have very little overlap
+    between people, which can make it difficult to decide which people are
+    similar.
+
+    Comparisions between items will not change as often as comparisions
+    between users.
+
+    user-based collaborative filtering
+    item-based collaborative filtering
+"""
+
+def calculate_similar_items(prefs, n = 10):
+    # Create a dictionary of items showing which other items they are most
+    #   similar to
+    result = {}
+
+    # Invert the preference matrix to the item-centric
+    item_prefs = transform_prefs(prefs)
+    c = 0
+    for item in item_prefs:
+        # Status updates for large datasets
+        c += 1
+        if c % 100 == 0:
+            print("{} / {}".format(c, len(item_prefs)))
+
+        # Find the most similar items to this one
+        scores = top_matches(item_prefs, item, 
+                             n = n, 
+                             similarity = sim_distance)
+        result[item] = scores
+
+    return result
+
+# Test calculate_similar_items function
+itemsim = calculate_similar_items(critics)
+print(itemsim)
