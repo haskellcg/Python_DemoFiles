@@ -246,7 +246,7 @@ def str2utf8(s):
     return ("".join([unichr(ord(i)).encode("utf-8") for i in s]))
 
 def str2quote(s):
-    return urllib.quote_plus("".join([unichr(ord(i)).encode("utf-8") for i in s]))
+    return urllib.parse.quote_plus("".join([chr(ord(i)) for i in s]))
 
 def dict0(d):
     # Trims empty dict entries
@@ -266,7 +266,7 @@ def http_request(url, user_agent=USER_AGENT, retry=4):
 
     Retries up to four times (default) on exceptions.
     """
-    request = urllib.Request(url, headers={'User-Agent':user_agent})
+    request = urllib.request.Request(url, headers={'User-Agent':user_agent})
 
     # Remember last error
     e = None
@@ -275,12 +275,12 @@ def http_request(url, user_agent=USER_AGENT, retry=4):
     tries = retry;
     while tries:
         try:
-            return urllib.urlopen(request)
+            return urllib.request.urlopen(request)
 
         except urllib.error.HTTPError as e: # protocol errors,
             raise PyDeliciousException("%s" % e)
 
-        except urllib.URLError as e:
+        except urllib.error.URLError as e:
             # @xxx: Ugly check for time-out errors
             #if len(e)>0 and 'timed out' in arg[0]:
             print >> sys.stderr, "%s, %s tries left." % (e, tries)

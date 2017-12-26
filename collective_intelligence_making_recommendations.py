@@ -229,3 +229,7 @@ def transform_prefs(prefs):
 movies = transform_prefs(critics)
 print(top_matches(movies, "Superman Returns"))
 print(get_recommendations(movies, "Just My Luck"))
+
+# Test pydelicious.py
+# Http error 404, didn't work
+# print(pydelicious.get_popular(tag = ""))
