@@ -311,3 +311,32 @@ def get_recommended_items(prefs, item_match, user):
 # Test get_recommended_items function
 print(get_recommended_items(critics, itemsim, "Toby"))
 
+movielens_ratings_path = "./resources/ratings.csv"
+movielens_movies_path = "./resources/movies.csv"
+
+def load_movielens(ratings_path, movies_path):
+    # Get movie titles
+    movies = {}
+    for line_num,line in enumerate(open(movies_path)):
+        if line_num != 0:
+            (movie_id, movie_title) = line.split(",")[0:2]
+            movies[movie_id] = movie_title
+
+    # Load data
+    prefs = {}
+    for line_num,line in enumerate(open(ratings_path)):
+        if line_num != 0:
+            (user, movie_id, movie_rating, ts) = line.split(",")
+            prefs.setdefault(user, {})
+            prefs[user][movies[movie_id]] = float(movie_rating)
+
+    return prefs
+
+# Test load movielens function
+prefs = load_movielens(movielens_ratings_path, movielens_movies_path)
+print(len(prefs["4"]))
+
+print(get_recommendations(prefs, "4")[0:10])
+
+itemsim = calculate_similar_items(prefs, n = 50)
+print(get_recommended_items(prefs, itemsim, "4")[0:10])
