@@ -275,3 +275,39 @@ def calculate_similar_items(prefs, n = 10):
 # Test calculate_similar_items function
 itemsim = calculate_similar_items(critics)
 print(itemsim)
+
+def get_recommended_items(prefs, item_match, user):
+    user_ratings = prefs[user]
+    scores = {}
+    total_sim = {}
+
+    # Loop over items rated by this user
+    for (item, rating) in user_ratings.items():
+    
+        # Loop over items similar to this one
+        for (similarity, item2) in item_match[item]:
+
+            # Ignore if this user has already rated this item
+            if item2 in user_ratings:
+                continue
+
+            # Weighted sum of rating times similarity
+            scores.setdefault(item2, 0)
+            scores[item2] += rating * similarity
+
+            # Sum of all the similarity
+            total_sim.setdefault(item2, 0)
+            total_sim[item2] += similarity
+
+    # Didide each total score by total weighting to get an average
+    rankings = [(score / total_sim[item], item)
+                for item, score in scores.items()]
+
+    # Return the rankings from highest to lowest
+    rankings.sort(reverse = True)
+    return rankings
+
+
+# Test get_recommended_items function
+print(get_recommended_items(critics, itemsim, "Toby"))
+
