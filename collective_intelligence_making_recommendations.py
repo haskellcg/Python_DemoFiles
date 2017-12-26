@@ -180,7 +180,7 @@ def get_recommendations(prefs, person, similarity = sim_pearson):
         if other == person:
             continue
 
-        sim = similarity(critics, person, other)
+        sim = similarity(prefs, person, other)
 
         # ignore scores of zero or lower
         if sim <= 0:
@@ -226,3 +226,4 @@ def transform_prefs(prefs):
 #   dislike Just My Luck
 movies = transform_prefs(critics)
 print(top_matches(movies, "Superman Returns"))
+print(get_recommendations(movies, "Just My Luck"))
