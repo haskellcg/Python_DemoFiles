@@ -166,7 +166,7 @@ print(top_matches(critics, "Toby", n = 3))
 
 # Issue: Reveiwers who haven't reveiwed some of the movies that I might like
 # Issue: Reveiwer who strangely liked a movie that got bad reviews 
-#        from all the other critics returned by top_macthes
+#        from all the other critics returned by top_matches
 # 使用权重的方法，而不是把最相似的人的电影全部推送
 # 并且两人中有任何一人没看过的，不作为计算
 
@@ -208,3 +208,21 @@ def get_recommendations(prefs, person, similarity = sim_pearson):
 # Test get_recommendations function
 print(get_recommendations(critics, "Toby"))
 print(get_recommendations(critics, "Toby", similarity = sim_distance))
+
+def transform_prefs(prefs):
+    result = {}
+    for person in prefs:
+        for item in prefs[person]:
+            result.setdefault(item, {})
+
+            # Flip item and person
+            result[item][person] = prefs[person][item]
+
+    return result
+
+# Test transform_prefs function
+# Notice that in this example there are actually some negative correlation 
+#   scores, which indicate that those who like Superman Returns tend to
+#   dislike Just My Luck
+movies = transform_prefs(critics)
+print(top_matches(movies, "Superman Returns"))
